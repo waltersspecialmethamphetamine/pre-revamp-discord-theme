@@ -1,74 +1,45 @@
 /* 
- * Legacy Discord UI Fix (Basic Reversion)
- * This CSS aims to restore some of the old Discord UI elements.
- * Use in BetterDiscord or Vencord by pasting into your custom CSS.
+ * Generic Legacy UI Override
+ * This CSS attempts to remove rounded corners and extra spacing from many Discord elements.
+ * Note: This is a broad approach and may need further refinement.
  */
 
-/* Define root variables for a legacy feel */
-:root {
-  --legacy-border-radius: 0 !important;
-  --legacy-padding: 2px !important;
-  --legacy-font: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  --legacy-font-size: 14px !important;
-  --legacy-font-weight-normal: 500 !important;
-  --legacy-font-weight-bold: 600 !important;
+/* Remove border radius from any element that might be rounded */
+[class*="round"],
+[class*="radius"],
+[style*="border-radius"] {
+  border-radius: 0 !important;
 }
 
-/* Apply legacy font and spacing to channel containers */
-.containerDefault-YUSmu3,
-.name-28HaxV {
-  padding-top: var(--legacy-padding) !important;
-  padding-bottom: var(--legacy-padding) !important;
-  font-size: var(--legacy-font-size) !important;
-  font-family: var(--legacy-font) !important;
+/* Adjust any inline styles for padding that might cause extra space */
+[class*="padding"],
+[style*="padding"] {
+  padding: 2px !important;
 }
 
-/* Sharpen buttons by removing rounding and adjusting padding */
-.button-38aScr,
-.button-ejjZWC,
-.lookFilled-1H2Jvj {
-  border-radius: var(--legacy-border-radius) !important;
+/* Specific override for common containers (may need update if class names change) */
+div[class^="container"],
+div[class*="Wrapper"],
+div[class*="panel"] {
+  padding: 2px !important;
+}
+
+/* Remove rounding from buttons */
+button,
+a.button,
+div[class*="button"] {
+  border-radius: 0 !important;
   padding: 4px 8px !important;
 }
 
-/* Remove rounding from popouts and menus */
-.menu-1QACrS,
-.popout-3sVMXz,
-.userPopout-2j1gM4 {
-  border-radius: var(--legacy-border-radius) !important;
+/* Adjust font properties to try to mimic legacy sizes */
+* {
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
 
-/* Tweak channel and DM list layout */
-.wrapper-1S43wv,
-.privateChannels-1nO12o {
-  padding: 0 !important;
-}
-
-.privateChannels-1nO12o .channel-2QD9_O {
-  padding: 2px 10px !important;
-}
-
-/* Square off server icons */
-.wrapper-1BJsBx {
-  border-radius: var(--legacy-border-radius) !important;
-}
-
-/* Restore old font size for message content */
-.markup-eYLPri {
-  font-size: var(--legacy-font-size) !important;
-}
-
-/* Optional: Remove rounding from icons */
-.icon-3AqZ2e {
-  border-radius: var(--legacy-border-radius) !important;
-}
-
-/* Adjust toolbar spacing */
-.toolbar-3_r2xA {
-  padding: 0 8px !important;
-}
-
-/* Compact message container padding */
-.message-2CShn3 {
+/* Compact message containers */
+div[class*="message"] {
   padding: 4px 8px !important;
 }
